@@ -4,18 +4,35 @@ namespace Places.Models
 {
   public class Place
   {
-    public string Description { get; set; }
+    private string _cityName;
+    private int _stayLength;
+    private string _journalEntry;
     public int Id { get; }
-    private static List<Item> _instances = new List<Item> { };
+    private static List<Place> _instances = new List<Place> { };
 
-    public Item(string description)
+    public Place(string cityName)
     {
-      Description = description;
+      _cityName = cityName;
       _instances.Add(this);
       Id = _instances.Count;
     }
 
-    public static List<Item> GetAll()
+    public string GetCityName()
+    {
+      return _cityName;
+    }
+
+    public int GetStayLength()
+    {
+      return _stayLength;
+    }
+
+    public string GetJournalEntry()
+    {
+      return _journalEntry;
+    }
+
+    public static List<Place> GetAll()
     {
       return _instances;
     }
@@ -25,7 +42,7 @@ namespace Places.Models
       _instances.Clear();
     }
 
-    public static Item Find(int searchId)
+    public static Place Find(int searchId)
     {
       return _instances[searchId-1];
     }
