@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using ToDoList.Models;
+using Places.Models;
 using System.Collections.Generic;
 
 namespace Places.Controllers
@@ -7,31 +7,38 @@ namespace Places.Controllers
   public class PlacesController : Controller
   {
 
-    [HttpGet("/items")]
+    [HttpGet("/places")]
     public ActionResult Index()
     {
-      List<Item> allItems = Item.GetAll();
+      List<Place> allItems = Place.GetAll();
       return View(allItems);
     }
 
-    [HttpGet("/items/new")]
+    [HttpGet("/places/new")]
     public ActionResult New()
     {
       return View();
     }
 
-    [HttpPost("/items")]
-    public ActionResult Create(string description)
+    [HttpPost("/places")]
+    public ActionResult Create(string cityName, int stayLength, string journalEntry)
     {
-      Item myItem = new Item(description);
+      Place myItem = new Place(cityName, stayLength, journalEntry);
       return RedirectToAction("Index");
     }
 
-    [HttpPost("/items/delete")]
+    [HttpPost("/places/delete")]
     public ActionResult DeleteAll()
     {
-      Item.ClearAll();
+      Place.ClearAll();
       return View();
+    }
+
+    [HttpGet("/places/{id}")]
+    public ActionResult Show(int id)
+    {
+      Place foundItem = Place.Find(id);
+      return View(foundItem);
     }
 
   }

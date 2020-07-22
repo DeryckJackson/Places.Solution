@@ -10,9 +10,11 @@ namespace Places.Models
     public int Id { get; }
     private static List<Place> _instances = new List<Place> { };
 
-    public Place(string cityName)
+    public Place(string cityName, int stayLength, string journalEntry)
     {
       _cityName = cityName;
+      _stayLength = stayLength;
+      _journalEntry = journalEntry;
       _instances.Add(this);
       Id = _instances.Count;
     }

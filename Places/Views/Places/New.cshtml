@@ -1,7 +1,11 @@
 <div class="container">
-  <form action="/items" method="post">
-    <label for="description">Add a new item</label>
-    <input id="description" name="description" type="text">
+  <form action="/places" method="post">
+    <label for="cityName">City Name:</label>
+    <input id="cityName" name="CityName" type="text" required>
+    <label for="stayLength">Stay length in days:</label>
+    <input id="stayLength" name="stayLength" type="number" required>
+    <label for="journalEntry">Journal entry:</label>
+    <input id="journalEntry" name="journalEntry" type="textarea">
     <button type="submit">Submit</button>
   </form>
 </div>

@@ -1,6 +1,8 @@
-<h1>To Do List Item Details: </h1>
+<h1>Place Details: </h1>
 
-<h2>@Model.Description</h2>
+<h2>@Model.GetCityName()</h2>
+<p>Stay Length: @Model.GetStayLength()</p>
+<p>@Model.GetJournalEntry()</p>
 
-<a href='/items/new'>Add another item</a>
-<a href='/items'>View all items</a>
+<a href='/places/new'>Add another item</a>
+<a href='/places'>View all items</a>
